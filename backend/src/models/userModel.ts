@@ -10,10 +10,15 @@ class UserModel {
       data: { name, email, password: hashPassword(password) },
     })) as User;
   }
-  static async findUserById(id: string) {
-    return await prisma.user.findUnique({
+  static async findUserById(id: string): Promise<User> {
+    return (await prisma.user.findUnique({
       where: { id },
-    });
+    })) as User;
+  }
+  static async findUserByEmail(email: string): Promise<User> {
+    return (await prisma.user.findUnique({
+      where: { email },
+    })) as User;
   }
 }
 

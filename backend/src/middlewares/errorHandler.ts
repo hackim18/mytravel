@@ -31,6 +31,10 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
       statusCode = 400;
       errorMessage = err.message || "Invalid ObjectId";
       break;
+    case "AuthenticationError":
+      statusCode = 401;
+      errorMessage = err.message || "Invalid email or password";
+      break;
     case "PrismaClientKnownRequestError":
       switch (err.code) {
         case "P2002":
