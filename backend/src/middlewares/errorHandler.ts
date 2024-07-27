@@ -41,16 +41,13 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
           statusCode = 400;
           errorMessage = "Email already exists";
           break;
-        default:
-          statusCode = 500;
-          errorMessage = "Internal Server Error";
       }
       break;
     default:
       statusCode = 500;
       errorMessage = "Internal Server Error";
   }
-  res.status(statusCode).json({ message: errorMessage });
+  res.status(statusCode).json({ error: errorMessage });
 }
 
 export default errorHandler;

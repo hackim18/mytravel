@@ -7,11 +7,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Product {
+  id            String          @id @default(cuid())
+  name          String
+  description   String?
+  price         Float
+  stockQuantity Int
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  wishlistItems WishlistItem[]
+  likes         Like[]
+}
+
+model Like {
+  id         String    @id @default(cuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  product    Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@unique([userId, productId])
+}
+
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String        @id @default(cuid())
+  name        String
+  email       String        @unique
+  password    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  wishlist    Wishlist?     @relation
+  wishlistId  String?       @unique
+  likes       Like[]        
+}
+
+model Wishlist {
+  id          String          @id @default(cuid())
+  user        User            @relation(fields: [userId], references: [id])
+  userId      String          @unique
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  items       WishlistItem[]
+}
+
+model WishlistItem {
+  id         String   @id @default(cuid())
+  wishlist   Wishlist @relation(fields: [wishlistId], references: [id])
+  wishlistId String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+  quantity   Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
