@@ -1,0 +1,20 @@
+import { PrismaClient } from "@prisma/client";
+import { hashPassword } from "../utils/bcrypt";
+import { User } from "../types/userType";
+
+const prisma = new PrismaClient();
+
+class UserModel {
+  static async createUser(name: string, email: string, password: string): Promise<User> {
+    return (await prisma.user.create({
+      data: { name, email, password: hashPassword(password) },
+    })) as User;
+  }
+  static async findUserById(id: string) {
+    return await prisma.user.findUnique({
+      where: { id },
+    });
+  }
+}
+
+export default UserModel;
