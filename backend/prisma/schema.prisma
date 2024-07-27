@@ -10,6 +10,7 @@ datasource db {
 model Product {
   id            String          @id @default(cuid())
   name          String
+  thumbnail     String?
   description   String?
   price         Float
   stockQuantity Int

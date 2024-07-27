@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import userModel from "../models/userModel";
 import { comparePassword } from "../utils/bcrypt";
 import { signToken } from "../utils/jwt";
+import { UserRequest } from "../types/userType";
 
 class UserController {
   static async register(req: Request, res: Response, next: NextFunction) {
@@ -13,7 +14,7 @@ class UserController {
       const user = await userModel.createUser(name, email, password);
       res.status(201).json({
         message: "User created successfully",
-        data: { name: user.name, email: user.email },
+        data: user,
       });
     } catch (error) {
       next(error);
@@ -35,6 +36,17 @@ class UserController {
       }
       const access_token = signToken({ id: user.id, email: user.email });
       res.status(200).json({ access_token });
+    } catch (error) {
+      next(error);
+    }
+  }
+  static async getProfile(req: UserRequest, res: Response, next: NextFunction) {
+    try {
+      const user = await userModel.findUserById(req.user?.id || "");
+      if (!user) {
+        throw { name: "NotFound", message: "User not found" };
+      }
+      res.json(user);
     } catch (error) {
       next(error);
     }

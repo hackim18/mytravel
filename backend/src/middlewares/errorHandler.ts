@@ -4,6 +4,7 @@ import { Error } from "../types/errorType";
 function errorHandler(err: Error, req: Request, res: Response, next: NextFunction) {
   let statusCode: number = 500;
   let errorMessage: string = "Internal Server Error";
+  console.log({ errorCode: err.code });
   console.log({ errorName: err.name });
   console.log({ errorMessage: err.message });
   switch (err.name) {
@@ -34,6 +35,10 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
     case "AuthenticationError":
       statusCode = 401;
       errorMessage = err.message || "Invalid email or password";
+      break;
+    case "PrismaClientValidationError":
+      statusCode = 400;
+      errorMessage = err.message || "Validation Error";
       break;
     case "PrismaClientKnownRequestError":
       switch (err.code) {
