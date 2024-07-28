@@ -56,11 +56,11 @@ class ProductController {
   }
   static async createProduct(req: Request, res: Response, next: NextFunction) {
     try {
-      const { name, thumbnail, description, price, stockQuantity } = req.body;
-      if (!name || !thumbnail || !description || !price || !stockQuantity) {
+      const { name, thumbnail, location, description, price, stockQuantity } = req.body;
+      if (!name || !thumbnail || !description || !location || !price || !stockQuantity) {
         throw { name: "ValidationError", message: "All fields are required" };
       }
-      const product = await ProductModel.createProduct(name, thumbnail, description, parseFloat(price), +stockQuantity);
+      const product = await ProductModel.createProduct(name, thumbnail, description, location, parseFloat(price), +stockQuantity);
       res.status(201).json({
         message: "Product created successfully",
         data: product,
@@ -72,12 +72,20 @@ class ProductController {
   static async updateProduct(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const { name, thumbnail, description, price, stockQuantity } = req.body;
+      const { name, thumbnail, location, description, price, stockQuantity } = req.body;
       const product = await ProductModel.getProductById(id);
       if (!product) {
         throw { name: "NotFound", message: "Product not found" };
       }
-      const updatedProduct = await ProductModel.updateProduct(id, name, thumbnail, description, parseFloat(price), +stockQuantity);
+      const updatedProduct = await ProductModel.updateProduct(
+        id,
+        name,
+        thumbnail,
+        location,
+        description,
+        parseFloat(price),
+        +stockQuantity
+      );
       res.json({ message: "Product updated successfully", updatedProduct });
     } catch (error) {
       next(error);

@@ -44,7 +44,7 @@ function errorHandler(err: Error, req: Request, res: Response, next: NextFunctio
       switch (err.code) {
         case "P2002":
           statusCode = 400;
-          errorMessage = "Email already exists";
+          errorMessage = "User already exists";
           break;
       }
       break;

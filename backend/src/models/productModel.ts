@@ -88,15 +88,23 @@ class ProductModel {
       },
     });
   }
-  static async createProduct(name: string, thumbnail: string, description: string, price: number, stockQuantity: number) {
+  static async createProduct(name: string, thumbnail: string, location: string, description: string, price: number, stockQuantity: number) {
     return await prisma.product.create({
-      data: { name, thumbnail, description, price, stockQuantity },
+      data: { name, thumbnail, location, description, price, stockQuantity },
     });
   }
-  static async updateProduct(id: string, name: string, thumbnail: string, description: string, price: number, stockQuantity: number) {
+  static async updateProduct(
+    id: string,
+    name: string,
+    thumbnail: string,
+    location: string,
+    description: string,
+    price: number,
+    stockQuantity: number
+  ) {
     return await prisma.product.update({
       where: { id },
-      data: { name, thumbnail, description, price, stockQuantity },
+      data: { name, thumbnail, location, description, price, stockQuantity },
     });
   }
   static async deleteProduct(id: string) {
