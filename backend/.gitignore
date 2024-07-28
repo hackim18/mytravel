@@ -32,6 +32,9 @@ yarn.lock
 # Test coverage
 /coverage/
 
+#vercel
+.vercel
+
 # Temporary files
 *.tmp
 *.swp

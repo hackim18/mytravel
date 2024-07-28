@@ -17,6 +17,7 @@ router.post("/product", authentication, ProductController.createProduct);
 router.get("/product/:id", authentication, ProductController.getProductById);
 router.get("/products/favorite", authentication, ProductController.getAllProductsByLikeId);
 router.post("/product/:id/like", authentication, ProductController.likeOrUnlikeProduct);
+router.put("/product/:id", authentication, ProductController.updateProduct);
 router.delete("/product/:id", authentication, ProductController.deleteProduct);
 
 export default router;

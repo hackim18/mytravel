@@ -12,7 +12,7 @@ model Product {
   name          String
   thumbnail     String?
   description   String?
-  price         Float
+  price         Int
   stockQuantity Int
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt

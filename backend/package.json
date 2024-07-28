@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/bin/www.ts",
-    "build": "tsc",
+    "build": "prisma generate && tsc",
     "dev": "nodemon src/bin/www.ts",
     "prisma": "npx prisma",
     "migrate": "npx prisma migrate dev --name init",
     "reset": "npx prisma migrate reset --force",
     "seed": "ts-node prisma/seed/seed.ts",
-    "delete": "ts-node prisma/seed/delete.ts"
+    "delete": "ts-node prisma/seed/delete.ts",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "Hackim",

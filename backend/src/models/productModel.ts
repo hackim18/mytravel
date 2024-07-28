@@ -93,6 +93,12 @@ class ProductModel {
       data: { name, thumbnail, description, price, stockQuantity },
     });
   }
+  static async updateProduct(id: string, name: string, thumbnail: string, description: string, price: number, stockQuantity: number) {
+    return await prisma.product.update({
+      where: { id },
+      data: { name, thumbnail, description, price, stockQuantity },
+    });
+  }
   static async deleteProduct(id: string) {
     return await prisma.product.delete({
       where: { id },
