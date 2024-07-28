@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cuid3",
+    "name": "Product 1",
+    "thumbnail": "https://picsum.photos/200/300",
+    "location": "location for product1",
+    "description": "Description for product 1",
+    "price": 10.0,
+    "stockQuantity": 100,
+    "createdAt": "2024-07-28T14:14:18.238Z",
+    "updatedAt": "2024-07-28T14:14:18.238Z"
+  },
+  {
+    "id": "cuid4",
+    "name": "Product 2",
+    "thumbnail": "https://picsum.photos/200/300",
+    "location": "location for product1",
+    "description": "Description for product 2",
+    "price": 20.0,
+    "stockQuantity": 200,
+    "createdAt": "2024-07-28T14:14:18.238Z",
+    "updatedAt": "2024-07-28T14:14:18.238Z"
+  }
+]

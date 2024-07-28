@@ -1,0 +1,7 @@
+[
+  { "id": "cuid0", "name": "admin", "email": "admin@example.com", "password": "admin#1234" },
+  { "id": "cuid1", "name": "admin1", "email": "admin1@example.com", "password": "admin#1234" },
+  { "id": "cuid2", "name": "admin2", "email": "admin2@example.com", "password": "admin#1234" },
+  { "id": "cuid3", "name": "admin3", "email": "admin3@example.com", "password": "admin#1234" },
+  { "id": "cuid4", "name": "admin4", "email": "admin4@example.com", "password": "admin#1234" }
+]

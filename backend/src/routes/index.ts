@@ -3,6 +3,7 @@ import UserController from "../controllers/userController";
 import ProductController from "../controllers/productController";
 import authentication from "../middlewares/authentication";
 import WishlistController from "../controllers/wishlistController";
+import OrderController from "../controllers/orderController";
 const router = express.Router();
 
 router.get("/", (req: Request, res: Response) => {
@@ -24,5 +25,10 @@ router.delete("/product/:id", authentication, ProductController.deleteProduct);
 router.post("/wishlist", authentication, WishlistController.createWishlist);
 router.get("/wishlist", authentication, WishlistController.getWishlistByUserId);
 router.delete("/wishlist", authentication, WishlistController.deleteWishlist);
+
+router.post("/order", authentication, OrderController.createOrder);
+router.get("/order", authentication, OrderController.getOrdersByUserId);
+router.put("/order/:orderId", authentication, OrderController.updateOrderStatus);
+router.delete("/order/:orderId", authentication, OrderController.deleteOrder);
 
 export default router;

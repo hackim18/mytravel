@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cuid5",
+    "userId": "cuid0",
+    "productId": "cuid3",
+    "createdAt": "2024-07-28T14:14:18.238Z",
+    "updatedAt": "2024-07-28T14:14:18.238Z"
+  },
+  {
+    "id": "cuid6",
+    "userId": "cuid1",
+    "productId": "cuid4",
+    "createdAt": "2024-07-28T14:14:18.238Z",
+    "updatedAt": "2024-07-28T14:14:18.238Z"
+  }
+]
