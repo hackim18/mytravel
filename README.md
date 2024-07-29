@@ -380,8 +380,8 @@ The following diagram represents the database schema for the MyTravel applicatio
   {
     "items": [
       {
-        "productId": "cuid3",
-        "quantity": 2
+        "productId": "string",
+        "quantity": "int"
       },
       ...
     ],
