@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 (async () => {
   try {
-    await prisma.wishlist.deleteMany({});
+    await prisma.bookmark.deleteMany({});
     await prisma.orderItem.deleteMany({});
     await prisma.order.deleteMany({});
     await prisma.like.deleteMany({});

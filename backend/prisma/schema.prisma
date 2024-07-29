@@ -17,7 +17,7 @@ model Product {
   stockQuantity Int
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
-  wishlist      Wishlist[]
+  bookmark      Bookmark[]
   likes         Like[]
   orderItems    OrderItem[]
 }
@@ -41,12 +41,12 @@ model User {
   password    String
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-  wishlist    Wishlist[]
+  bookmark    Bookmark[]
   likes       Like[]
   orders      Order[]
 }
 
-model Wishlist {
+model Bookmark {
   id         String   @id @default(cuid())
   userId     String
   productId  String

@@ -4,7 +4,7 @@ import likesData from "./data/likes.json";
 import productsData from "./data/products.json";
 import ordersData from "./data/orders.json";
 import orderItemsData from "./data/orderItems.json";
-import wishlistsData from "./data/wishlists.json";
+import bookmarksDats from "./data/bookmarks.json";
 
 import { hashPassword } from "../../src/utils/bcrypt";
 
@@ -43,9 +43,9 @@ const prisma = new PrismaClient();
         data: orderItemData,
       });
     }
-    for (const wishlistData of wishlistsData) {
-      await prisma.wishlist.create({
-        data: wishlistData,
+    for (const bookmarkData of bookmarksDats) {
+      await prisma.bookmark.create({
+        data: bookmarkData,
       });
     }
 

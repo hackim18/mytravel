@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import UserController from "../controllers/userController";
 import ProductController from "../controllers/productController";
 import authentication from "../middlewares/authentication";
-import WishlistController from "../controllers/wishlistController";
+import BookmarkController from "../controllers/bookmarkController";
 import OrderController from "../controllers/orderController";
 const router = express.Router();
 
@@ -22,9 +22,9 @@ router.post("/product/:id/like", authentication, ProductController.likeOrUnlikeP
 router.put("/product/:id", authentication, ProductController.updateProduct);
 router.delete("/product/:id", authentication, ProductController.deleteProduct);
 
-router.post("/wishlist", authentication, WishlistController.createWishlist);
-router.get("/wishlist", authentication, WishlistController.getWishlistByUserId);
-router.delete("/wishlist/:productId", authentication, WishlistController.deleteWishlist);
+router.post("/bookmark", authentication, BookmarkController.createBookmark);
+router.get("/bookmark", authentication, BookmarkController.getBookmarkByUserId);
+router.delete("/bookmark/:productId", authentication, BookmarkController.deleteBookmark);
 
 router.post("/order", authentication, OrderController.createOrder);
 router.get("/order", authentication, OrderController.getOrdersByUserId);
