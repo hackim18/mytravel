@@ -53,6 +53,12 @@ npm run dev
 Access the Application
 Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
+## Database Schema
+
+The following diagram represents the database schema for the MyTravel application:
+
+![alt text](backend/schema/DatabaseSchema.png)
+
 ## API Endpoints
 
 ### 1. User Management
