@@ -7,9 +7,12 @@ class WishlistController {
     try {
       const { productId } = req.body;
       const userId = req.user?.id || "";
-      console.log("🚀", { productId, userId });
+      const isWishlistExist = await Wishlist.getWishlistByProductId(userId, productId);
+      if (isWishlistExist) {
+        res.json({ message: "Product already in wishlist" });
+      }
       const wishlist = await Wishlist.createWishlist(userId, productId);
-      res.json(wishlist);
+      res.json({ message: "Product added to wishlist", wishlist });
     } catch (error) {
       next(error);
     }
@@ -25,7 +28,8 @@ class WishlistController {
   }
   static async deleteWishlist(req: UserRequest, res: Response, next: NextFunction) {
     try {
-      const { productId } = req.body;
+      const { productId } = req.params;
+      console.log("🚀 ~ WishlistController ~ deleteWishlist ~ productId:", productId);
       const userId = req.user?.id || "";
       const wishlist = await Wishlist.deleteWishlist(userId, productId);
       if (wishlist.count === 0) {

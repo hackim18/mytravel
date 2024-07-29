@@ -24,7 +24,7 @@ router.delete("/product/:id", authentication, ProductController.deleteProduct);
 
 router.post("/wishlist", authentication, WishlistController.createWishlist);
 router.get("/wishlist", authentication, WishlistController.getWishlistByUserId);
-router.delete("/wishlist", authentication, WishlistController.deleteWishlist);
+router.delete("/wishlist/:productId", authentication, WishlistController.deleteWishlist);
 
 router.post("/order", authentication, OrderController.createOrder);
 router.get("/order", authentication, OrderController.getOrdersByUserId);

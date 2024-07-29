@@ -21,6 +21,14 @@ class WishlistModel {
       },
     });
   }
+  static async getWishlistByProductId(userId: string, productId: string) {
+    return await prisma.wishlist.findFirst({
+      where: {
+        userId,
+        productId,
+      },
+    });
+  }
   static async deleteWishlist(userId: string, productId: string) {
     return await prisma.wishlist.deleteMany({
       where: {

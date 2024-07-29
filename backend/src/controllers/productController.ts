@@ -26,9 +26,9 @@ class ProductController {
   static async getAllProductsByLikeId(req: UserRequest, res: Response, next: NextFunction) {
     try {
       const product = await ProductModel.getAllProductsByLikeId(req.user?.id || "");
-      if (product.length === 0) {
-        throw { name: "NotFound", message: "Product not found" };
-      }
+      // if (product.length === 0) {
+      //   throw { name: "NotFound", message: "Product not found" };
+      // }
       res.json(product);
     } catch (error) {
       next(error);
@@ -60,7 +60,7 @@ class ProductController {
       if (!name || !thumbnail || !description || !location || !price || !stockQuantity) {
         throw { name: "ValidationError", message: "All fields are required" };
       }
-      const product = await ProductModel.createProduct(name, thumbnail, description, location, parseFloat(price), +stockQuantity);
+      const product = await ProductModel.createProduct(name, thumbnail, location, description, parseFloat(price), +stockQuantity);
       res.status(201).json({
         message: "Product created successfully",
         data: product,
